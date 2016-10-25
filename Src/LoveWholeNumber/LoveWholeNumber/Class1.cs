@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace LoveWholeNumber
 {
@@ -87,6 +88,15 @@ namespace LoveWholeNumber
             int high = n + 6;
 
             if (IsPrime(n) && ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high))))
+                return true;
+
+            return false;
+        }
+
+        public static bool IsPalindromicNumber(int n)
+        {
+            int reversal = int.Parse(new string(n.ToString().ToCharArray().Reverse().ToArray()));
+            if (reversal == n)
                 return true;
 
             return false;
