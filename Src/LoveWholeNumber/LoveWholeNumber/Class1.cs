@@ -300,16 +300,13 @@ namespace LoveWholeNumber
             return ListUpDivisor(n).Count;
         }
 
-
-
-
-
-        public static int SumOfDivisors(List<int> Divisors)
+        public static int DivisorFunction(int n, int x)
         {
-            int sum = 0;
+            int sum = new int();
+            List<int> divisors = ListUpDivisor(n);
 
-            foreach (int d in Divisors)
-                sum += d;
+            foreach (int d in divisors)
+                sum += d ^ x;
 
             return sum;
         }
