@@ -416,5 +416,47 @@ namespace LoveWholeNumber
 
             return sum;
         }
+
+        /// <summary>
+        /// フィボナッチ数判定
+        /// </summary>
+        /// <param name="n">判定したい数字</param>
+        /// <returns>フィボナッチ数ならtrue でないならfalse</returns>
+        public static bool IsFibonacciNumber(int n)
+        {
+            if (n < 0)
+                return false;
+
+            int f0 = 0;
+            int f1 = 1;
+
+            if (n == f0 || n == f1)
+                return true;
+
+            while (f1 < n)
+            {
+                int f2 = f0 + f1;
+
+                if (f2 == n)
+                    return true;
+
+                f0 = f1;
+                f1 = f2;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// フィボナッチ素数判定
+        /// </summary>
+        /// <param name="n">判定したい数字</param>
+        /// <returns>フィボナッチ素数ならtrue でないならfalse</returns>
+        public static bool IsFibonacciPrime(int n)
+        {
+            if (IsFibonacciNumber(n) && IsPrime(n))
+                return true;
+
+            return false;
+        }
     }
 }
