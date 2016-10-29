@@ -66,7 +66,7 @@ namespace LoveWholeNumber
         /// </summary>
         /// <param name="n">判定したい数字</param>
         /// <returns>双子素数ならtrue でないならfalse</returns>
-        public static bool IsTwinPrime(int n)
+        public static bool IsOneOfTheTwinPrime(int n)
         {
             int low = n - 2;
             int high = n + 2;
@@ -82,7 +82,7 @@ namespace LoveWholeNumber
         /// </summary>
         /// <param name="n">判定したい数字</param>
         /// <returns>いとこ素数ならtrue でないならfalse</returns>
-        public static bool IsCousinPrime(int n)
+        public static bool IsOneOfTheCousinPrime(int n)
         {
             int low = n - 4;
             int high = n + 4;
@@ -98,7 +98,7 @@ namespace LoveWholeNumber
         /// </summary>
         /// <param name="n">判定したい数字</param>
         /// <returns>セクシー素数ならtrue でないならfalse</returns>
-        public static bool IsSexyPrime(int n)
+        public static bool IsOneOfTheSexyPrime(int n)
         {
             int low = n - 6;
             int high = n + 6;
@@ -458,5 +458,7 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+
     }
 }
