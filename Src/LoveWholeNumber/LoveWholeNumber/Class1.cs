@@ -62,10 +62,10 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// 双子素数判定
+        /// 双子素数の一部か判定
         /// </summary>
         /// <param name="n">判定したい数字</param>
-        /// <returns>双子素数ならtrue でないならfalse</returns>
+        /// <returns>双子素数の一部ならtrue でないならfalse</returns>
         public static bool IsOneOfTheTwinPrime(int n)
         {
             if (!IsPrime(n))
@@ -85,7 +85,7 @@ namespace LoveWholeNumber
         /// </summary>
         /// <param name="p">小さいほうの数字</param>
         /// <param name="p2">大きいほうの数字</param>
-        /// <returns>双子素数組ならtrue でないならfalse</returns>
+        /// <returns>双子素数ならtrue でないならfalse</returns>
         public static bool IsTwinPrime(int p, int p2)
         {
             if (p == 2 && p2 == 3)
@@ -101,10 +101,10 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// いとこ素数判定
+        /// いとこ素数の一部か判定
         /// </summary>
         /// <param name="n">判定したい数字</param>
-        /// <returns>いとこ素数ならtrue でないならfalse</returns>
+        /// <returns>いとこ素数の一部ならtrue でないならfalse</returns>
         public static bool IsOneOfTheCousinPrime(int n)
         {
             if (!IsPrime(n))
@@ -124,7 +124,7 @@ namespace LoveWholeNumber
         /// </summary>
         /// <param name="p">小さいほうの数字</param>
         /// <param name="p4">大きいほうの数字</param>
-        /// <returns>いとこ素数組ならtrue でないならfalse</returns>
+        /// <returns>いとこ素数ならtrue でないならfalse</returns>
         public static bool IsCousinPrime(int p, int p4)
         {
             if (p4 - p == 4)
@@ -137,10 +137,10 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// セクシー素数判定
+        /// セクシー素数の一部か判定
         /// </summary>
         /// <param name="n">判定したい数字</param>
-        /// <returns>セクシー素数ならtrue でないならfalse</returns>
+        /// <returns>セクシー素数の一部ならtrue でないならfalse</returns>
         public static bool IsOneOfTheSexyPrime(int n)
         {
             if (!IsPrime(n))
@@ -160,7 +160,7 @@ namespace LoveWholeNumber
         /// </summary>
         /// <param name="p">小さいほうの数字</param>
         /// <param name="p6">大きいほうの数字</param>
-        /// <returns>セクシー素数組ならtrue でないならfalse</returns>
+        /// <returns>セクシー素数ならtrue でないならfalse</returns>
         public static bool IsSexyPrime(int p, int p6)
         {
             if (p6 - p == 6)
