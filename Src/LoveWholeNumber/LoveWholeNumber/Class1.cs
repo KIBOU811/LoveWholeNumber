@@ -68,10 +68,13 @@ namespace LoveWholeNumber
         /// <returns>双子素数ならtrue でないならfalse</returns>
         public static bool IsOneOfTheTwinPrime(int n)
         {
+            if (!IsPrime(n))
+                return false;
+
             int low = n - 2;
             int high = n + 2;
 
-            if (IsPrime(n) && ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high))))
+            if ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high)))
                 return true;
             
             return false;
@@ -84,10 +87,13 @@ namespace LoveWholeNumber
         /// <returns>いとこ素数ならtrue でないならfalse</returns>
         public static bool IsOneOfTheCousinPrime(int n)
         {
+            if (!IsPrime(n))
+                return false;
+
             int low = n - 4;
             int high = n + 4;
 
-            if (IsPrime(n) && ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high))))
+            if ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high)))
                 return true;
 
             return false;
@@ -100,10 +106,13 @@ namespace LoveWholeNumber
         /// <returns>セクシー素数ならtrue でないならfalse</returns>
         public static bool IsOneOfTheSexyPrime(int n)
         {
+            if (!IsPrime(n))
+                return false;
+
             int low = n - 6;
             int high = n + 6;
 
-            if (IsPrime(n) && ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high))))
+            if ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high)))
                 return true;
 
             return false;
@@ -229,7 +238,7 @@ namespace LoveWholeNumber
         /// <returns>メルセンヌ素数ならtrue でないならfalse</returns>
         public static bool IsMersennePrime(int n)
         {
-            if (IsMersenneNumber(n) && IsPrime(n))
+            if (IsPrime(n) && IsMersenneNumber(n))
                 return true;
 
             return false;
@@ -300,7 +309,7 @@ namespace LoveWholeNumber
         /// <returns>カレン素数ならtrue でないならfalse</returns>
         public static bool IsCullenPrime(int n)
         {
-            if (IsCullenNumber(n) && IsPrime(n))
+            if (IsPrime(n) && IsCullenNumber(n))
                 return true;
 
             return false;
@@ -342,7 +351,7 @@ namespace LoveWholeNumber
         /// <returns>ウッダル素数ならtrue でないならfalse</returns>
         public static bool IsWoodallPrime(int n)
         {
-            if (IsWoodallNumber(n) && IsPrime(n))
+            if (IsPrime(n) && IsWoodallNumber(n))
                 return true;
 
             return false;
@@ -453,7 +462,7 @@ namespace LoveWholeNumber
         /// <returns>フィボナッチ素数ならtrue でないならfalse</returns>
         public static bool IsFibonacciPrime(int n)
         {
-            if (IsFibonacciNumber(n) && IsPrime(n))
+            if (IsPrime(n) && IsFibonacciNumber(n))
                 return true;
 
             return false;
