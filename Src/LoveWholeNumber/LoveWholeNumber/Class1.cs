@@ -81,6 +81,26 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// 双子素数判定
+        /// </summary>
+        /// <param name="p">小さいほうの数字</param>
+        /// <param name="p2">大きいほうの数字</param>
+        /// <returns>双子素数組ならtrue でないならfalse</returns>
+        public static bool IsTwinPrime(int p, int p2)
+        {
+            if (p == 2 && p2 == 3)
+                return true;
+
+            if (p2 - p == 2)
+                return false;
+
+            if (IsPrime(p) && IsPrime(p2))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
         /// いとこ素数判定
         /// </summary>
         /// <param name="n">判定したい数字</param>
@@ -100,6 +120,23 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// いとこ素数判定
+        /// </summary>
+        /// <param name="p">小さいほうの数字</param>
+        /// <param name="p4">大きいほうの数字</param>
+        /// <returns>いとこ素数組ならtrue でないならfalse</returns>
+        public static bool IsCousinPrime(int p, int p4)
+        {
+            if (p4 - p == 4)
+                return false;
+
+            if (IsPrime(p) && IsPrime(p4))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
         /// セクシー素数判定
         /// </summary>
         /// <param name="n">判定したい数字</param>
@@ -113,6 +150,23 @@ namespace LoveWholeNumber
             int high = n + 6;
 
             if ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high)))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// セクシー素数判定
+        /// </summary>
+        /// <param name="p">小さいほうの数字</param>
+        /// <param name="p6">大きいほうの数字</param>
+        /// <returns>セクシー素数組ならtrue でないならfalse</returns>
+        public static bool IsSexyPrime(int p, int p6)
+        {
+            if (p6 - p == 6)
+                return false;
+
+            if (IsPrime(p) && IsPrime(p6))
                 return true;
 
             return false;
