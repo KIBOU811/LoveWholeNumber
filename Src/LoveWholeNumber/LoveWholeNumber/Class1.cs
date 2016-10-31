@@ -62,48 +62,146 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// 双子素数判定
+        /// 双子素数判定(p, p + 2のうちpであるか判定)
         /// </summary>
         /// <param name="n">判定したい数字</param>
-        /// <returns>双子素数ならtrue でないならfalse</returns>
+        /// <returns>双子素数の一部ならtrue でないならfalse</returns>
         public static bool IsTwinPrime(int n)
         {
-            int low = n - 2;
+            if (!IsPrime(n))
+                return false;
+
             int high = n + 2;
 
-            if (IsPrime(n) && ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high))))
+            if (IsPrime(high))
                 return true;
             
             return false;
         }
 
         /// <summary>
-        /// いとこ素数判定
+        /// 双子素数のペア判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
-        /// <returns>いとこ素数ならtrue でないならfalse</returns>
-        public static bool IsCousinPrime(int n)
+        /// <param name="p">小さいほうの数字</param>
+        /// <param name="p2">大きいほうの数字</param>
+        /// <returns>双子素数ならtrue でないならfalse</returns>
+        public static bool IsTwinPrimePair(int p, int p2)
         {
-            int low = n - 4;
-            int high = n + 4;
+            if (p2 - p != 2)
+                return false;
 
-            if (IsPrime(n) && ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high))))
+            if (IsPrime(p) && IsPrime(p2))
                 return true;
 
             return false;
         }
 
         /// <summary>
-        /// セクシー素数判定
+        /// いとこ素数判定(p, p + 4のうちpであるか判定)
         /// </summary>
         /// <param name="n">判定したい数字</param>
-        /// <returns>セクシー素数ならtrue でないならfalse</returns>
+        /// <returns>いとこ素数の一部ならtrue でないならfalse</returns>
+        public static bool IsCousinPrime(int n)
+        {
+            if (!IsPrime(n))
+                return false;
+
+            int high = n + 4;
+
+            if (IsPrime(high))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// いとこ素数のペア判定
+        /// </summary>
+        /// <param name="p">小さいほうの数字</param>
+        /// <param name="p4">大きいほうの数字</param>
+        /// <returns>いとこ素数ならtrue でないならfalse</returns>
+        public static bool IsCousinPrimePair(int p, int p4)
+        {
+            if (p4 - p != 4)
+                return false;
+
+            if (IsPrime(p) && IsPrime(p4))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// セクシー素数判定(p, p + 6のうちpであるか判定)
+        /// </summary>
+        /// <param name="n">判定したい数字</param>
+        /// <returns>セクシー素数の一部ならtrue でないならfalse</returns>
         public static bool IsSexyPrime(int n)
         {
-            int low = n - 6;
+            if (!IsPrime(n))
+                return false;
+
             int high = n + 6;
 
-            if (IsPrime(n) && ((IsPrime(low) && !IsPrime(high)) || (!IsPrime(low) && IsPrime(high))))
+            if (IsPrime(high))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// セクシー素数のペア判定
+        /// </summary>
+        /// <param name="p">小さいほうの数字</param>
+        /// <param name="p6">大きいほうの数字</param>
+        /// <returns>セクシー素数ならtrue でないならfalse</returns>
+        public static bool IsSexyPrimePair(int p, int p6)
+        {
+            if (p6 - p != 6)
+                return false;
+
+            if (IsPrime(p) && IsPrime(p6))
+                return true;
+
+            return false;
+        }
+
+        public static bool IsPrimeTriplet(int n)
+        {
+            if (IsPrime(n))
+                return false;
+
+            int n2 = n + 2;
+            int n4 = n + 4;
+            int n6 = n + 6;
+
+            if (IsSexyPrimePair(n, n6) && (IsTwinPrimePair(n, n4) || IsCousinPrimePair(n, n6)))
+                return true;
+
+            return false;
+        }
+
+        public static bool IsPrimeTripletTrio(int p, int mid, int p6)
+        {
+            if (!IsPrime(p) || !IsPrime(mid) || !IsPrime(p6) || p6 - p != 6)
+                return false;
+            
+            if (IsPrimeTriplet(p) && (IsTwinPrimePair(mid, p6) || IsCousinPrimePair(mid, p6)))
+                return true;
+
+            return false;
+        }
+        
+        public static bool IsPrimeQuadruplet(int n)
+        {
+            if (IsPrime(n))
+                return false;
+
+            int n2 = n + 2;
+            int n6 = n + 6;
+            int n8 = n + 8;
+
+            if (IsPrime(n2) && IsPrime(n6) && IsPrime(n8))
                 return true;
 
             return false;
@@ -229,7 +327,7 @@ namespace LoveWholeNumber
         /// <returns>メルセンヌ素数ならtrue でないならfalse</returns>
         public static bool IsMersennePrime(int n)
         {
-            if (IsMersenneNumber(n) && IsPrime(n))
+            if (IsPrime(n) && IsMersenneNumber(n))
                 return true;
 
             return false;
@@ -300,7 +398,7 @@ namespace LoveWholeNumber
         /// <returns>カレン素数ならtrue でないならfalse</returns>
         public static bool IsCullenPrime(int n)
         {
-            if (IsCullenNumber(n) && IsPrime(n))
+            if (IsPrime(n) && IsCullenNumber(n))
                 return true;
 
             return false;
@@ -342,7 +440,7 @@ namespace LoveWholeNumber
         /// <returns>ウッダル素数ならtrue でないならfalse</returns>
         public static bool IsWoodallPrime(int n)
         {
-            if (IsWoodallNumber(n) && IsPrime(n))
+            if (IsPrime(n) && IsWoodallNumber(n))
                 return true;
 
             return false;
@@ -416,5 +514,49 @@ namespace LoveWholeNumber
 
             return sum;
         }
+
+        /// <summary>
+        /// フィボナッチ数判定
+        /// </summary>
+        /// <param name="n">判定したい数字</param>
+        /// <returns>フィボナッチ数ならtrue でないならfalse</returns>
+        public static bool IsFibonacciNumber(int n)
+        {
+            if (n < 0)
+                return false;
+
+            int f0 = 0;
+            int f1 = 1;
+
+            if (n == f0 || n == f1)
+                return true;
+
+            while (f1 < n)
+            {
+                int f2 = f0 + f1;
+
+                if (f2 == n)
+                    return true;
+
+                f0 = f1;
+                f1 = f2;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// フィボナッチ素数判定
+        /// </summary>
+        /// <param name="n">判定したい数字</param>
+        /// <returns>フィボナッチ素数ならtrue でないならfalse</returns>
+        public static bool IsFibonacciPrime(int n)
+        {
+            if (IsPrime(n) && IsFibonacciNumber(n))
+                return true;
+
+            return false;
+        }
+
+
     }
 }
