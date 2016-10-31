@@ -9,7 +9,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>素数ならtrue でないならfalse</returns>
         public static bool IsPrime(int n)
         {
@@ -32,7 +32,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 何番目の素数か判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>何番目かを返す 素数でない場合は-1</returns>
         public static int NumOfPrime(int n)
         {
@@ -64,7 +64,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 双子素数判定(p, p + 2のうちpであるか判定)
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>双子素数ならtrue でないならfalse</returns>
         public static bool IsTwinPrime(int n)
         {
@@ -99,7 +99,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// いとこ素数判定(p, p + 4のうちpであるか判定)
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>いとこ素数ならtrue でないならfalse</returns>
         public static bool IsCousinPrime(int n)
         {
@@ -134,7 +134,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// セクシー素数判定(p, p + 6のうちpであるか判定)
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>セクシー素数ならtrue でないならfalse</returns>
         public static bool IsSexyPrime(int n)
         {
@@ -169,18 +169,18 @@ namespace LoveWholeNumber
         /// <summary>
         /// 三つ子素数判定(p, p + 2, p + 6またはp, p + 4, p + 6のうちpであるか判定)
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>三つ子素数ならtrue でないならfalse</returns>
         public static bool IsPrimeTriplet(int n)
         {
-            if (IsPrime(n))
+            if (!IsPrime(n))
                 return false;
 
             int n2 = n + 2;
             int n4 = n + 4;
             int n6 = n + 6;
 
-            if (IsPrime(n6) && (IsPrime(n2) || IsPrime(n4)))
+            if ((IsPrime(n2) || IsPrime(n4)) && IsPrime(n6))
                 return true;
 
             return false;
@@ -195,9 +195,6 @@ namespace LoveWholeNumber
         /// <returns>三つ子素数のセットならtrue でないならfalse</returns>
         public static bool IsPrimeTripletTrio(int p, int mid, int p6)
         {
-            if (!IsPrime(p) || !IsPrime(mid) || !IsPrime(p6) || p6 - p != 6)
-                return false;
-            
             if (IsPrimeTriplet(p) && (IsTwinPrimePair(mid, p6) || IsCousinPrimePair(mid, p6)))
                 return true;
 
@@ -205,13 +202,13 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// 四つ子素数判定(p, p + 2, p + 4, p + 6のうちpであるか判定)
+        /// 四つ子素数判定(p, p + 2, p + 6, p + 8のうちpであるか判定)
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>四つ子素数ならtrue でないならfalse</returns>
         public static bool IsPrimeQuadruplet(int n)
         {
-            if (IsPrime(n))
+            if (!IsPrime(n))
                 return false;
 
             int n2 = n + 2;
@@ -231,13 +228,72 @@ namespace LoveWholeNumber
         /// <param name="p2">最小の数 + 2</param>
         /// <param name="p6">最小の数 + 6</param>
         /// <param name="p8">最小の数 + 8</param>
-        /// <returns></returns>
+        /// <returns>四つ子素数のセットならtrue でないならfalse</returns>
         public static bool IsPrimeQuadrupletSet(int p, int p2, int p6, int p8)
         {
-            if (!IsPrime(p) || !IsPrime(p2) || !IsPrime(p6) || !IsPrime(p8) || p8 - p != 8)
-                return false;
-
             if (IsPrimeQuadruplet(p) && IsTwinPrimePair(p, p2) && IsTwinPrimePair(p6, p8) && IsCousinPrimePair(p2, p6))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// 五つ子素数判定(p, p + 2, p + 6, p + 8かつp - 4またはp + 12が素数のときpであるか判定)
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>五つ子素数ならtrue でないならfalse</returns>
+        public static bool IsPrimeQuintuplet(int n)
+        {
+            if (IsPrimeQuadruplet(n) && (IsPrime(n - 4) || IsPrime(n + 12)))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// 五つ子素数のセット判定
+        /// </summary>
+        /// <param name="p">ある数</param>
+        /// <param name="p2">ある数 + 2</param>
+        /// <param name="p6">ある数 + 6</param>
+        /// <param name="p8">ある数 + 8</param>
+        /// <param name="anotherP">ある数 - 4またはある数 + 12</param>
+        /// <returns>五つ子素数のセットならtrue でないならfalse</returns>
+        public static bool IsPrimeQuintupletSet(int p, int p2, int p6, int p8, int anotherP)
+        {
+            if (IsPrimeQuadrupletSet(p, p2, p6, p8) &&
+                (IsCousinPrimePair(anotherP, p) || IsCousinPrimePair(p8, anotherP)))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// 六つ子素数判定(p - 4, p, p + 2, p + 6, p + 8, p + 12のうちpであるか判定)
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>六つ子素数ならtrue でないならfalse</returns>
+        public static bool IsPrimeSextuplet(int n)
+        {
+            if (IsPrimeQuadruplet(n) && IsPrime(n - 4) && IsPrime(n + 12))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// 六つ子素数のセット判定
+        /// </summary>
+        /// <param name="p4">ある数 - 4</param>
+        /// <param name="p">ある数</param>
+        /// <param name="p2">ある数 + 2</param>
+        /// <param name="p6">ある数 + 6</param>
+        /// <param name="p8">ある数 + 8</param>
+        /// <param name="p12">ある数 + 12</param>
+        /// <returns>六つ子素数のセットならtrue でないならfalse</returns>
+        public static bool IsPrimeSextupletSet(int p4, int p, int p2, int p6, int p8, int p12)
+        {
+            if (IsPrimeQuadrupletSet(p, p2, p6, p8) && IsCousinPrimePair(p4, p) && IsCousinPrimePair(p8, p12))
                 return true;
 
             return false;
@@ -246,7 +302,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 回文数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>回文数ならtrue でないならfalse</returns>
         public static bool IsPalindromicNumber(int n)
         {
@@ -264,7 +320,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 回文素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>回文素数ならtrue でないならfalse</returns>
         public static bool IsPalindromicPrime(int n)
         {
@@ -277,7 +333,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// エマープ判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>エマープならtrue でないならfalse</returns>
         public static bool IsEmirp(int n)
         {
@@ -295,7 +351,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// オイラー素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>オイラー素数ならtrue でないならfalse</returns>
         public static bool IsEularPrimeNumber(int n)
         {
@@ -316,7 +372,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// スーパー素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>スーパー素数ならtrue でないならfalse</returns>
         public static bool IsSuperPrime(int n)
         {
@@ -329,7 +385,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// メルセンヌ数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>メルセンヌ数ならtrue でないならfalse</returns>
         public static bool IsMersenneNumber(int n)
         {
@@ -359,7 +415,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// メルセンヌ素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>メルセンヌ素数ならtrue でないならfalse</returns>
         public static bool IsMersennePrime(int n)
         {
@@ -372,7 +428,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// ソフィー・ジェルマン素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>ソフィー・ジェルマン素数ならtrue でないならfalse</returns>
         public static bool IsSophieGermainPrime(int n)
         {
@@ -385,7 +441,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 安全素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>安全素数ならtrue でないならfalse</returns>
         public static bool IsSafePrime(int n)
         {
@@ -401,7 +457,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// カレン数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>カレン数ならtrue でないならfalse</returns>
         public static bool IsCullenNumber(int n)
         {
@@ -430,7 +486,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// カレン素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>カレン素数ならtrue でないならfalse</returns>
         public static bool IsCullenPrime(int n)
         {
@@ -443,7 +499,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// ウッダル数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>ウッダル数ならtrue でないならfalse</returns>
         public static bool IsWoodallNumber(int n)
         {
@@ -472,7 +528,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// ウッダル素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>ウッダル素数ならtrue でないならfalse</returns>
         public static bool IsWoodallPrime(int n)
         {
@@ -485,7 +541,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 奇素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>奇素数ならtrue でないならfalse</returns>
         public static bool IsOddPrime(int n)
         {
@@ -498,7 +554,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 偶素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>偶素数ならtrue でないならfalse</returns>
         public static bool IsEvenPrime(int n)
         {
@@ -511,7 +567,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 約数の列挙
         /// </summary>
-        /// <param name="n">約数を列挙したい数字</param>
+        /// <param name="n">約数を列挙したい自然数</param>
         /// <returns>列挙された約数のint型List</returns>
         public static List<int> ListUpDivisor(int n)
         {
@@ -527,7 +583,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// 約数の数
         /// </summary>
-        /// <param name="n">約数の数を求めたい数字</param>
+        /// <param name="n">約数の数を求めたい自然数</param>
         /// <returns>約数の数</returns>
         public static int CountOfDivisor(int n)
         {
@@ -554,7 +610,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// フィボナッチ数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>フィボナッチ数ならtrue でないならfalse</returns>
         public static bool IsFibonacciNumber(int n)
         {
@@ -583,7 +639,7 @@ namespace LoveWholeNumber
         /// <summary>
         /// フィボナッチ素数判定
         /// </summary>
-        /// <param name="n">判定したい数字</param>
+        /// <param name="n">判定したい自然数</param>
         /// <returns>フィボナッチ素数ならtrue でないならfalse</returns>
         public static bool IsFibonacciPrime(int n)
         {
