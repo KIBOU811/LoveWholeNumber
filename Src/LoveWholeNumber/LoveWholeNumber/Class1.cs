@@ -65,7 +65,7 @@ namespace LoveWholeNumber
         /// 双子素数判定(p, p + 2のうちpであるか判定)
         /// </summary>
         /// <param name="n">判定したい数字</param>
-        /// <returns>双子素数の一部ならtrue でないならfalse</returns>
+        /// <returns>双子素数ならtrue でないならfalse</returns>
         public static bool IsTwinPrime(int n)
         {
             if (!IsPrime(n))
@@ -82,9 +82,9 @@ namespace LoveWholeNumber
         /// <summary>
         /// 双子素数のペア判定
         /// </summary>
-        /// <param name="p">小さいほうの数字</param>
-        /// <param name="p2">大きいほうの数字</param>
-        /// <returns>双子素数ならtrue でないならfalse</returns>
+        /// <param name="p">最小の数</param>
+        /// <param name="p2">最小の数 + 2</param>
+        /// <returns>双子素数のペアならtrue でないならfalse</returns>
         public static bool IsTwinPrimePair(int p, int p2)
         {
             if (p2 - p != 2)
@@ -100,7 +100,7 @@ namespace LoveWholeNumber
         /// いとこ素数判定(p, p + 4のうちpであるか判定)
         /// </summary>
         /// <param name="n">判定したい数字</param>
-        /// <returns>いとこ素数の一部ならtrue でないならfalse</returns>
+        /// <returns>いとこ素数ならtrue でないならfalse</returns>
         public static bool IsCousinPrime(int n)
         {
             if (!IsPrime(n))
@@ -117,9 +117,9 @@ namespace LoveWholeNumber
         /// <summary>
         /// いとこ素数のペア判定
         /// </summary>
-        /// <param name="p">小さいほうの数字</param>
-        /// <param name="p4">大きいほうの数字</param>
-        /// <returns>いとこ素数ならtrue でないならfalse</returns>
+        /// <param name="p">最小の数</param>
+        /// <param name="p4">最小の数 + 4</param>
+        /// <returns>いとこ素数のペアならtrue でないならfalse</returns>
         public static bool IsCousinPrimePair(int p, int p4)
         {
             if (p4 - p != 4)
@@ -135,7 +135,7 @@ namespace LoveWholeNumber
         /// セクシー素数判定(p, p + 6のうちpであるか判定)
         /// </summary>
         /// <param name="n">判定したい数字</param>
-        /// <returns>セクシー素数の一部ならtrue でないならfalse</returns>
+        /// <returns>セクシー素数ならtrue でないならfalse</returns>
         public static bool IsSexyPrime(int n)
         {
             if (!IsPrime(n))
@@ -152,9 +152,9 @@ namespace LoveWholeNumber
         /// <summary>
         /// セクシー素数のペア判定
         /// </summary>
-        /// <param name="p">小さいほうの数字</param>
-        /// <param name="p6">大きいほうの数字</param>
-        /// <returns>セクシー素数ならtrue でないならfalse</returns>
+        /// <param name="p">最小の数</param>
+        /// <param name="p6">最小の数 + 6</param>
+        /// <returns>セクシー素数のペアならtrue でないならfalse</returns>
         public static bool IsSexyPrimePair(int p, int p6)
         {
             if (p6 - p != 6)
@@ -166,6 +166,11 @@ namespace LoveWholeNumber
             return false;
         }
 
+        /// <summary>
+        /// 三つ子素数判定(p, p + 2, p + 6またはp, p + 4, p + 6のうちpであるか判定)
+        /// </summary>
+        /// <param name="n">判定したい数字</param>
+        /// <returns>三つ子素数ならtrue でないならfalse</returns>
         public static bool IsPrimeTriplet(int n)
         {
             if (IsPrime(n))
@@ -175,12 +180,19 @@ namespace LoveWholeNumber
             int n4 = n + 4;
             int n6 = n + 6;
 
-            if (IsSexyPrimePair(n, n6) && (IsTwinPrimePair(n, n4) || IsCousinPrimePair(n, n6)))
+            if (IsPrime(n6) && (IsPrime(n2) || IsPrime(n4)))
                 return true;
 
             return false;
         }
 
+        /// <summary>
+        /// 三つ子素数のトリオ判定
+        /// </summary>
+        /// <param name="p">最小の数</param>
+        /// <param name="mid">最小の数 + 2 または 最小の数 + 4</param>
+        /// <param name="p6">最小の数 + 6</param>
+        /// <returns>三つ子素数のセットならtrue でないならfalse</returns>
         public static bool IsPrimeTripletTrio(int p, int mid, int p6)
         {
             if (!IsPrime(p) || !IsPrime(mid) || !IsPrime(p6) || p6 - p != 6)
@@ -191,7 +203,12 @@ namespace LoveWholeNumber
 
             return false;
         }
-        
+
+        /// <summary>
+        /// 四つ子素数判定(p, p + 2, p + 4, p + 6のうちpであるか判定)
+        /// </summary>
+        /// <param name="n">判定したい数字</param>
+        /// <returns>四つ子素数ならtrue でないならfalse</returns>
         public static bool IsPrimeQuadruplet(int n)
         {
             if (IsPrime(n))
@@ -202,6 +219,25 @@ namespace LoveWholeNumber
             int n8 = n + 8;
 
             if (IsPrime(n2) && IsPrime(n6) && IsPrime(n8))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// 四つ子素数のセット判定
+        /// </summary>
+        /// <param name="p">最小の数</param>
+        /// <param name="p2">最小の数 + 2</param>
+        /// <param name="p6">最小の数 + 6</param>
+        /// <param name="p8">最小の数 + 8</param>
+        /// <returns></returns>
+        public static bool IsPrimeQuadrupletSet(int p, int p2, int p6, int p8)
+        {
+            if (!IsPrime(p) || !IsPrime(p2) || !IsPrime(p6) || !IsPrime(p8) || p8 - p != 8)
+                return false;
+
+            if (IsPrimeQuadruplet(p) && IsTwinPrimePair(p, p2) && IsTwinPrimePair(p6, p8) && IsCousinPrimePair(p2, p6))
                 return true;
 
             return false;
