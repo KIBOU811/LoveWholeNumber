@@ -65,7 +65,8 @@ namespace LoveWholeNumber
         {
             if (nth == 1 || nth == 2)
                 return nth + 1;
-
+            
+            for (int i = 3)
 
         }*/
 
