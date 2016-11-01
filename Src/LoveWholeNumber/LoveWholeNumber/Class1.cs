@@ -34,7 +34,7 @@ namespace LoveWholeNumber
         /// </summary>
         /// <param name="n">判定したい自然数</param>
         /// <returns>何番目かを返す 素数でない場合は-1</returns>
-        public static int NumOfPrime(int n)
+        public static int GetNumOfPrime(int n)
         {
             if (n == 2 || n == 3)
                 return n - 1;
@@ -60,6 +60,14 @@ namespace LoveWholeNumber
             }
             return -1;
         }
+        /*
+        public static int GetNthPrime(int nth)
+        {
+            if (nth == 1 || nth == 2)
+                return nth + 1;
+
+
+        }*/
 
         /// <summary>
         /// 双子素数判定(p, p + 2のうちpであるか判定)
@@ -376,7 +384,7 @@ namespace LoveWholeNumber
         /// <returns>スーパー素数ならtrue でないならfalse</returns>
         public static bool IsSuperPrime(int n)
         {
-            if (IsPrime(n) && IsPrime(NumOfPrime(n)))
+            if (IsPrime(n) && IsPrime(GetNumOfPrime(n)))
                 return true;
 
             return false;
@@ -649,6 +657,61 @@ namespace LoveWholeNumber
             return false;
         }
 
+        /// <summary>
+        /// ハッピー関数
+        /// </summary>
+        /// <param name="n">引数</param>
+        /// <returns>各桁の平方数の和</returns>
+        public static int HappyFunction(int n)
+        {
+            int length = n.ToString("D").Length;
+            List<int> digitList = new List<int>();
 
+            for (int i = 0; i < length; i++)
+            {
+                digitList.Add(n % 10);
+                n /= 10;
+            }
+
+            int result = 0;
+
+            foreach (var i in digitList)
+            {
+                result += i * i;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// ハッピー数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>ハッピー数ならtrue でないならfalse</returns>
+        public static bool IsHappyNumber(int n)
+        {
+            while (n.ToString("D").Length != 1)
+            {
+                HappyFunction(n);
+            }
+
+            if (n == 1)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// ハッピー素数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>ハッピー素数ならtrue でないならfalse</returns>
+        public static bool IsHappyPrime(int n)
+        {
+            if (IsPrime(n) && IsHappyNumber(n))
+                return true;
+
+            return false;
+        }
     }
 }
