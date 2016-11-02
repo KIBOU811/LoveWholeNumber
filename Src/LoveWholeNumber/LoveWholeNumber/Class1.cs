@@ -483,6 +483,19 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// ピタゴラス素数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>ピタゴラス素数ならtrue でないならfalse</returns>
+        public static bool IsPythagoreanPrime(int n)
+        {
+            if (IsPrime(n) && (n - 1) % 4 == 0)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
         /// カレン数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
