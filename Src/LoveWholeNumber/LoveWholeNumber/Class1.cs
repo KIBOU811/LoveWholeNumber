@@ -837,5 +837,26 @@ namespace LoveWholeNumber
 
             return true;
         }
+
+        /// <summary>
+        /// Right-truncatable prime判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>Right-truncatable primeならtrue でないならfalse</returns>
+        public static bool IsRightTruncatablePrime(int n)
+        {
+            if (!IsPrime(n))
+                return false;
+
+            while (true)
+            {
+                n /= 10;
+                if (n == 0)
+                    return true;
+
+                if (!IsPrime(n))
+                    return false;
+            }
+        }
     }
 }
