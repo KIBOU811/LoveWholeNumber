@@ -800,7 +800,5 @@ namespace LoveWholeNumber
 
             return false;
         }
-
-
     }
 }
