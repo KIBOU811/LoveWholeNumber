@@ -813,5 +813,29 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// Left-truncatable prime判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>Left-truncatable primeならtrue でないならfalse</returns>
+        public static bool IsLeftTruncatablePrime(int n)
+        {
+            if (!IsPrime(n))
+                return false;
+
+            string s = n.ToString();
+
+            if (s.Contains("0"))
+                return false;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (!IsPrime(int.Parse(s.Substring(i))))
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
