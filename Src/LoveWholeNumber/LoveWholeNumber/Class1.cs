@@ -60,15 +60,34 @@ namespace LoveWholeNumber
             }
             return -1;
         }
-        /*
+        
+        /// <summary>
+        /// n番目の素数取得
+        /// </summary>
+        /// <param name="nth">n番目の素数</param>
+        /// <returns>n番目の素数 失敗で-1</returns>
         public static int GetNthPrime(int nth)
         {
             if (nth == 1 || nth == 2)
                 return nth + 1;
-            
-            for (int i = 3)
 
-        }*/
+            if (nth > 105097564)
+                return -1;
+
+            int count = 2;
+
+            for (int i = 3; i < 2147483647; i += 2)
+            {
+                if (IsPrime(i))
+                {
+                    count++;
+                    if (count == nth)
+                        return count;
+                }
+            }
+
+            return -1;
+        }
 
         /// <summary>
         /// 双子素数判定(p, p + 2のうちpであるか判定)
