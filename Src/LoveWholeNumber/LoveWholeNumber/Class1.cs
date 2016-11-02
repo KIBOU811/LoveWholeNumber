@@ -782,5 +782,23 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 弱素数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>弱素数ならtrue でないならfalse</returns>
+        public static bool IsWeekPrime(int n)
+        {
+            int numOfPrime = GetNumOfPrime(n);
+
+            if (numOfPrime == -1)
+                return false;
+
+            if ((GetNthPrime(numOfPrime - 1) + GetNumOfPrime(numOfPrime + 1)) / 2 > n)
+                return true;
+
+            return false;
+        }
     }
 }
