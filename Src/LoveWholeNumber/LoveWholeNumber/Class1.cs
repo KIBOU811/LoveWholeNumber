@@ -60,15 +60,34 @@ namespace LoveWholeNumber
             }
             return -1;
         }
-        /*
+        
+        /// <summary>
+        /// n番目の素数取得
+        /// </summary>
+        /// <param name="nth">n番目の素数</param>
+        /// <returns>n番目の素数 失敗で-1</returns>
         public static int GetNthPrime(int nth)
         {
             if (nth == 1 || nth == 2)
                 return nth + 1;
-            
-            for (int i = 3)
 
-        }*/
+            if (nth > 105097564)
+                return -1;
+
+            int count = 2;
+
+            for (int i = 3; i < 2147483647; i += 2)
+            {
+                if (IsPrime(i))
+                {
+                    count++;
+                    if (count == nth)
+                        return count;
+                }
+            }
+
+            return -1;
+        }
 
         /// <summary>
         /// 双子素数判定(p, p + 2のうちpであるか判定)
@@ -464,6 +483,19 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// ピタゴラス素数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>ピタゴラス素数ならtrue でないならfalse</returns>
+        public static bool IsPythagoreanPrime(int n)
+        {
+            if (IsPrime(n) && (n - 1) % 4 == 0)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
         /// カレン数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
@@ -710,6 +742,24 @@ namespace LoveWholeNumber
         public static bool IsHappyPrime(int n)
         {
             if (IsPrime(n) && IsHappyNumber(n))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// 平衡素数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>平衡素数ならtrue でないならfalse</returns>
+        public static bool IsBalancedPrime(int n)
+        {
+            int numOfPrime = GetNumOfPrime(n);
+
+            if (numOfPrime == -1)
+                return false;
+
+            if ((GetNthPrime(numOfPrime - 1) + GetNumOfPrime(numOfPrime + 1)) / 2 == n)
                 return true;
 
             return false;
