@@ -800,5 +800,18 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 半素数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>半素数ならtrue でないならfalse</returns>
+        public static bool IsSemiprime(int n)
+        {
+            if (CountOfDivisor(n) == 3 || CountOfDivisor(n) == 4)
+                return true;
+
+            return false;
+        }
     }
 }
