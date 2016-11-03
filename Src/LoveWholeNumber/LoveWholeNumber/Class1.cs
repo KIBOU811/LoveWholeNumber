@@ -858,5 +858,18 @@ namespace LoveWholeNumber
                     return false;
             }
         }
+
+        /// <summary>
+        /// Two-sided prime判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>Two-sided primeならtrue でないならfalse</returns>
+        public static bool IsTwoSidedPrime(int n)
+        {
+            if (IsLeftTruncatablePrime(n) && IsRightTruncatablePrime(n))
+                return true;
+
+            return false;
+        }
     }
 }
