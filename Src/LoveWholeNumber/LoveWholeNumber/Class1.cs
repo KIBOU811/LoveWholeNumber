@@ -186,10 +186,13 @@ namespace LoveWholeNumber
         /// <summary>
         /// ハッピー関数
         /// </summary>
-        /// <param name="n">引数</param>
-        /// <returns>各桁の平方数の和</returns>
+        /// <param name="n">自然数の引数</param>
+        /// <returns>各桁の平方数の和 失敗で-1</returns>
         public static int HappyFunction(int n)
         {
+            if (n < 1)
+                return -1;
+
             int length = n.ToString("D").Length;
             List<int> digitList = new List<int>();
 
@@ -216,6 +219,9 @@ namespace LoveWholeNumber
         /// <returns>ハッピー数ならtrue でないならfalse</returns>
         public static bool IsHappyNumber(int n)
         {
+            if (n < 1)
+                return false;
+
             while (n.ToString("D").Length != 1)
             {
                 HappyFunction(n);
