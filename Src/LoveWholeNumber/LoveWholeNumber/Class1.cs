@@ -406,5 +406,19 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 友愛数判定
+        /// </summary>
+        /// <param name="m">判定したい自然数</param>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>友愛数ならtrue でないならfalse</returns>
+        public static bool IsAmicablePair(int m, int n)
+        {
+            if (SumOfDivisorMinusN(m) == SumOfDivisorMinusN(n) && m > 1)
+                return true;
+
+            return false;
+        }
     }
 }
