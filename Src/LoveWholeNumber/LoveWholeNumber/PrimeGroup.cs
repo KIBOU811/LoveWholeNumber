@@ -327,31 +327,13 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// 回文数判定
-        /// </summary>
-        /// <param name="n">判定したい自然数</param>
-        /// <returns>回文数ならtrue でないならfalse</returns>
-        public static bool IsPalindromicNumber(int n)
-        {
-            if (n < 0)
-                return false;
-
-            int reversal = int.Parse(new string(n.ToString().ToCharArray().Reverse().ToArray()));
-
-            if (reversal == n)
-                return true;
-
-            return false;
-        }
-
-        /// <summary>
         /// 回文素数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
         /// <returns>回文素数ならtrue でないならfalse</returns>
         public static bool IsPalindromicPrime(int n)
         {
-            if (IsPalindromicNumber(n) && IsPrime(n))
+            if (WholeNumberClass.IsPalindromicNumber(n) && IsPrime(n))
                 return true;
 
             return false;
@@ -369,7 +351,7 @@ namespace LoveWholeNumber
 
             int reversal = int.Parse(new string(n.ToString().ToCharArray().Reverse().ToArray()));
 
-            if (!IsPalindromicNumber(n) && IsPrime(reversal))
+            if (!WholeNumberClass.IsPalindromicNumber(n) && IsPrime(reversal))
                 return true;
 
             return false;
