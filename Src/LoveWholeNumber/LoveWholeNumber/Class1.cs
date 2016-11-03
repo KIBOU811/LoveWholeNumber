@@ -142,9 +142,12 @@ namespace LoveWholeNumber
         /// </summary>
         /// <param name="n">自然数</param>
         /// <param name="x">乗数 0で約数の個数 1で約数の総和</param>
-        /// <returns>総和</returns>
+        /// <returns>総和 引数nが1未満で0</returns>
         public static int DivisorFunction(int n, int x)
         {
+            if (n < 1)
+                return 0;
+
             int sum = new int();
             List<int> divisors = ListUpDivisor(n);
 
