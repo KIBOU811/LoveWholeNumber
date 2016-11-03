@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LoveWholeNumber
 {
-    public class WholeNumberClass
+    public class WholeNumberGroup
     {
         /// <summary>
         /// 回文数判定
