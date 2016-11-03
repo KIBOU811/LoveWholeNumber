@@ -226,5 +226,45 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 幸運数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>幸運数ならtrue でないならfalse</returns>
+        public static bool IsLuckyNumber(int n)
+        {
+            List<bool> isLuckyList = new List<bool>();
+
+            for (int i = 0; i < n; i++)
+            {
+                isLuckyList.Add(true);
+            }
+
+            int multiple = 2;
+
+            while (isLuckyList[n - 1])
+            {
+                for (int i = 0; i < isLuckyList.Count; i++)
+                {
+                    if ((i + 1) % multiple == 0)
+                        isLuckyList[i] = false;
+                }
+
+                for (int i = multiple; i < n; i++)
+                {
+                    if (isLuckyList[i])
+                    {
+                        if (i == n - 1)
+                            return true;
+
+                        multiple = i + 1;
+                        break;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }
