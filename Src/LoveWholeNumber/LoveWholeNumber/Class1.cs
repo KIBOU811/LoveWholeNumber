@@ -353,7 +353,7 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// 準完全数
+        /// 準完全数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
         /// <returns>準完全数ならtrue でないならfalse</returns>
@@ -362,6 +362,21 @@ namespace LoveWholeNumber
             int sum = SumOfDivisorMinusN(n);
 
             if (sum == n + 1)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// 概完全数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>概完全数ならtrue でないならfalse</returns>
+        public static bool IsAlmostPerfectNumber(int n)
+        {
+            int sum = SumOfDivisorMinusN(n);
+
+            if (sum == n - 1)
                 return true;
 
             return false;
