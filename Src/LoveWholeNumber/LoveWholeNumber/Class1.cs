@@ -420,5 +420,24 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 社交数判定
+        /// </summary>
+        /// <param name="l">判定したい自然数</param>
+        /// <param name="m">判定したい自然数</param>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>社交数ならtrue でないならfalse</returns>
+        public static bool IsSociableNumbers(int l, int m, int n)
+        {
+            n = SumOfDivisorMinusN(n)
+
+            if (l > 1
+                && SumOfDivisorMinusN(l) == n
+                && SumOfDivisorMinusN(m) == n)
+                return true;
+
+            return false;
+        }
     }
 }
