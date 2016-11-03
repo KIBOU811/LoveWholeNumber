@@ -439,5 +439,21 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 倍積完全数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>倍積完全数ならtrue でないならfalse</returns>
+        public static bool IsMultiperfectNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            if (DivisorFunction(n, 1) % n == 0)
+                return true;
+
+            return false;
+        }
     }
 }
