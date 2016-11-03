@@ -283,6 +283,28 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// 約数の総和から元の数を引いた数を返す
+        /// </summary>
+        /// <param name="n">元の自然数</param>
+        /// <returns>約数の総和から元の数を引いた数 0以下は0</returns>
+        private static int SumOfDivisorMinusN(int n)
+        {
+            List<int> divisorList = ListUpDivisor(n);
+
+            int sum = new int();
+
+            foreach (var d in divisorList)
+            {
+                if (d == n)
+                    break;
+
+                sum += d;
+            }
+
+            return sum;
+        }
+
+        /// <summary>
         /// 完全数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
