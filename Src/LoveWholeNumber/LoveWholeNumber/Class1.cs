@@ -430,7 +430,7 @@ namespace LoveWholeNumber
         /// <returns>社交数ならtrue でないならfalse</returns>
         public static bool IsSociableNumbers(int l, int m, int n)
         {
-            n = SumOfDivisorMinusN(n)
+            n = SumOfDivisorMinusN(n);
 
             if (l > 1
                 && SumOfDivisorMinusN(l) == n
@@ -451,6 +451,22 @@ namespace LoveWholeNumber
                 return false;
 
             if (DivisorFunction(n, 1) % n == 0)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// ハイパー完全数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>ハイパー完全数ならtrue でないならfalse</returns>
+        public static bool IsHyperPerfectNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            if ((n - 1) % (SumOfDivisorMinusN(n) - 1) == 0)
                 return true;
 
             return false;
