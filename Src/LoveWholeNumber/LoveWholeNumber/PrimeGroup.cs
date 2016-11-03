@@ -648,5 +648,18 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 幸運素数判定の追加
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>幸運素数ならtrue でないならfalse</returns>
+        public static bool IsLuckyPrime(int n)
+        {
+            if (IsPrime(n) && WholeNumberGroup.IsLuckyNumber(n))
+                return true;
+
+            return false;
+        }
     }
 }
