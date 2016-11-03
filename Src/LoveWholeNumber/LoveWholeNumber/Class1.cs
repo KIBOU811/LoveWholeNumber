@@ -234,6 +234,12 @@ namespace LoveWholeNumber
         /// <returns>幸運数ならtrue でないならfalse</returns>
         public static bool IsLuckyNumber(int n)
         {
+            if (n < 1)
+                return false;
+
+            if (n == 1)
+                return true;
+
             List<bool> isLuckyList = new List<bool>();
 
             for (int i = 0; i < n; i++)
