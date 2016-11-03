@@ -311,20 +311,7 @@ namespace LoveWholeNumber
         /// <returns>完全数ならtrue でないならfalse</returns>
         public static bool IsPerfectNumber(int n)
         {
-            List<int> divisorList = ListUpDivisor(n);
-
-            if (divisorList.Count == 0)
-                return false;
-
-            int sum = new int();
-
-            foreach (var d in divisorList)
-            {
-                if (d == n)
-                    break;
-
-                sum += d;
-            }
+            int sum = SumOfDivisorMinusN(n);
 
             if (sum == n)
                 return true;
@@ -339,20 +326,7 @@ namespace LoveWholeNumber
         /// <returns>過剰数ならtrue でないならfalse</returns>
         public static bool IsAbundantNumber(int n)
         {
-            List<int> divisorList = ListUpDivisor(n);
-
-            if (divisorList.Count == 0)
-                return false;
-
-            int sum = new int();
-
-            foreach (var d in divisorList)
-            {
-                if (d == n)
-                    break;
-
-                sum += d;
-            }
+            int sum = SumOfDivisorMinusN(n);
 
             if (sum > n)
                 return true;
@@ -367,20 +341,10 @@ namespace LoveWholeNumber
         /// <returns>不足数ならtrue でないならfalse</returns>
         public static bool IsDeficientNumber(int n)
         {
-            List<int> divisorList = ListUpDivisor(n);
+            int sum = SumOfDivisorMinusN(n);
 
-            if (divisorList.Count == 0)
+            if (sum == 0)
                 return false;
-
-            int sum = new int();
-
-            foreach (var d in divisorList)
-            {
-                if (d == n)
-                    break;
-
-                sum += d;
-            }
 
             if (sum < n)
                 return true;
@@ -395,20 +359,7 @@ namespace LoveWholeNumber
         /// <returns>準完全数ならtrue でないならfalse</returns>
         public static bool IsQuasiperfectNumber(int n)
         {
-            List<int> divisorList = ListUpDivisor(n);
-
-            if (divisorList.Count == 0)
-                return false;
-
-            int sum = new int();
-
-            foreach (var d in divisorList)
-            {
-                if (d == n)
-                    break;
-
-                sum += d;
-            }
+            int sum = SumOfDivisorMinusN(n);
 
             if (sum == n + 1)
                 return true;
