@@ -381,5 +381,30 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 乗法的完全数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>乗法的完全数ならtrue でないまたは引数が46340よりも大きいならfalse</returns>
+        public static bool IsMultiplicativePerfectNumber(int n)
+        {
+            if (n > 46340 || n < 1)
+                return false;
+
+            List<int> divisorList = ListUpDivisor(n);
+
+            int product = 1;
+
+            foreach (var d in divisorList)
+            {
+                product *= d;
+            }
+
+            if (product == n * n)
+                return true;
+
+            return false;
+        }
     }
 }
