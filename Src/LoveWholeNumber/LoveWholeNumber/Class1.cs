@@ -365,5 +365,33 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 準完全数
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>準完全数ならtrue でないならfalse</returns>
+        public static bool IsQuasiperfectNumber(int n)
+        {
+            List<int> divisorList = ListUpDivisor(n);
+
+            if (divisorList.Count == 0)
+                return false;
+
+            int sum = new int();
+
+            foreach (var d in divisorList)
+            {
+                if (d == n)
+                    break;
+
+                sum += d;
+            }
+
+            if (sum == n + 1)
+                return true;
+
+            return false;
+        }
     }
 }
