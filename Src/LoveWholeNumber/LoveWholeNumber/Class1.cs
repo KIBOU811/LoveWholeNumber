@@ -337,5 +337,33 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 不足数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>不足数ならtrue でないならfalse</returns>
+        public static bool IsDeficientNumber(int n)
+        {
+            List<int> divisorList = ListUpDivisor(n);
+
+            if (divisorList.Count == 0)
+                return false;
+
+            int sum = new int();
+
+            foreach (var d in divisorList)
+            {
+                if (d == n)
+                    break;
+
+                sum += d;
+            }
+
+            if (sum < n)
+                return true;
+
+            return false;
+        }
     }
 }
