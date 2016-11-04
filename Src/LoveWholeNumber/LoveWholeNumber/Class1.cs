@@ -564,5 +564,24 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// オイラーのφ関数
+        /// </summary>
+        /// <param name="n">正の整数</param>
+        /// <returns>1からnまでの互いに素の数 nが0以下なら-1</returns>
+        public static int EulerFunction(int n)
+        {
+            if (n < 1)
+                return -1;
+
+            int count = new int();
+            for (int i = 1; i < n; i++)
+            {
+                if (IsCoprime(i, n))
+                    count++;
+            }
+            return count;
+        }
     }
 }
