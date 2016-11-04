@@ -547,5 +547,22 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 対ごとに素判定
+        /// </summary>
+        /// <param name="l">整数l</param>
+        /// <param name="m">整数m</param>
+        /// <param name="n">整数n</param>
+        /// <returns>対ごとに素ならtrue でないならfalse</returns>
+        public static bool IsPairwiseCoprime(int l, int m, int n)
+        {
+            if (GetGreatestCommonDivisor(l, m) == 1
+                && GetGreatestCommonDivisor(m, n) == 1
+                && GetGreatestCommonDivisor(n, l) == 1)
+                return true;
+
+            return false;
+        }
     }
 }
