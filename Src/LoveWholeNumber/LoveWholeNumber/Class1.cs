@@ -515,5 +515,19 @@ namespace LoveWholeNumber
         {
             return m * n / GetGreatestCommonDivisor(m, n);
         }
+
+        /// <summary>
+        /// 互いに素判定
+        /// </summary>
+        /// <param name="m">整数m</param>
+        /// <param name="n">整数n</param>
+        /// <returns>互いに素ならtrue でないならfalse</returns>
+        public static bool IsCoprime(int m, int n)
+        {
+            if (GetGreatestCommonDivisor(m, n) == 1)
+                return true;
+
+            return false;
+        }
     }
 }
