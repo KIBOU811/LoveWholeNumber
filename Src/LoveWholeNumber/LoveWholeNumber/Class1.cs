@@ -471,5 +471,38 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 最大公約数の取得
+        /// </summary>
+        /// <param name="m">整数m</param>
+        /// <param name="n">整数n</param>
+        /// <returns>最大公約数</returns>
+        public static int GetGreatestCommonDivisor(int m, int n)
+        {
+            if (m < 0)
+                m *= -1;
+
+            if (n < 0)
+                n *= -1;
+
+            if (m < n)
+            {
+                int tmp = m;
+                m = n;
+                n = tmp;
+            }
+
+            int r = m % n;
+
+            while (r != 0)
+            {
+                m = n;
+                n = r;
+                r = m % n;
+            }
+
+            return n;
+        }
     }
 }
