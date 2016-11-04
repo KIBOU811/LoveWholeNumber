@@ -583,5 +583,29 @@ namespace LoveWholeNumber
             }
             return count;
         }
+
+        /// <summary>
+        /// 完全トーティエント数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>完全トーティエント数ならtrue でないならfalse</returns>
+        public static bool IsPerfectTotientNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            int sum = new int();
+
+            while (n!=1)
+            {
+                n = EulerFunction(n);
+                sum += n;
+            }
+
+            if (sum == n)
+                return true;
+
+            return false;
+        }
     }
 }
