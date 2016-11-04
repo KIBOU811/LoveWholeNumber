@@ -652,5 +652,26 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 高度合成数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>高度合成数ならtrue でないならfalse</returns>
+        public static bool IsHighlyCompositeNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            int divisorCount = DivisorFunction(n, 0);
+
+            for (int i = 1; i < n; i++)
+            {
+                if (divisorCount <= DivisorFunction(i, 0))
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
