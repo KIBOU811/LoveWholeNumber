@@ -532,5 +532,20 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 互いに素判定
+        /// </summary>
+        /// <param name="l">整数l</param>
+        /// <param name="m">整数m</param>
+        /// <param name="n">整数n</param>
+        /// <returns>互いに素ならtrue でないならfalse</returns>
+        public static bool IsCoprime(int l, int m, int n)
+        {
+            if (GetGreatestCommonDivisor(GetGreatestCommonDivisor(l, m), n) == 1)
+                return true;
+
+            return false;
+        }
     }
 }
