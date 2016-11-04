@@ -504,5 +504,16 @@ namespace LoveWholeNumber
 
             return n;
         }
+
+        /// <summary>
+        /// 最小公倍数の取得
+        /// </summary>
+        /// <param name="m">整数m</param>
+        /// <param name="n">整数n</param>
+        /// <returns>最小公倍数</returns>
+        public static int GetLeastCommonMultiple(int m, int n)
+        {
+            return m * n / GetGreatestCommonDivisor(m, n);
+        }
     }
 }
