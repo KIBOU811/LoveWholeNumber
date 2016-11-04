@@ -636,5 +636,21 @@ namespace LoveWholeNumber
 
             return true;
         }
+
+        /// <summary>
+        /// 合成数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>合成数ならtrue でないならfalse</returns>
+        public static bool CompositeNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            if (!PrimeGroup.IsPrime(n))
+                return true;
+
+            return false;
+        }
     }
 }
