@@ -607,5 +607,34 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 楔数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>楔数ならtrue でないならfalse</returns>
+        public static bool IsSphenicNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            List<int> divisorList = ListUpDivisor(n);
+
+            if (divisorList.Count != 8)
+                return false;
+            
+            int count = new int();
+
+            foreach (int d in divisorList)
+            {
+                if (PrimeGroup.IsPrime(d))
+                    count++;
+            }
+
+            if (count != 3)
+                return false;
+
+            return true;
+        }
     }
 }
