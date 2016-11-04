@@ -493,6 +493,9 @@ namespace LoveWholeNumber
                 n = tmp;
             }
 
+            if (n == 0)
+                return m;
+
             int r = m % n;
 
             while (r != 0)
