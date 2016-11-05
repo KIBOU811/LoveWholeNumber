@@ -7,6 +7,33 @@ namespace LoveWholeNumber
     public class WholeNumberGroup
     {
         /// <summary>
+        /// 素因数分解の辞書
+        /// </summary>
+        /// <param name="n">素因数分解したい自然数</param>
+        /// <returns>素因数がkeyその冪指数がvalue 失敗で空のDictionary</returns>
+        public static Dictionary<int, int> GetPrimeFactorDictionary(int n)
+        {
+            Dictionary<int, int> primeFactorDic = new Dictionary<int, int>();
+
+            if (n < 1)
+                return primeFactorDic;
+
+            for (int i = 2; i <= Math.Sqrt(n); i++)
+            {
+                int count = new int();
+                while (n % i == 0)
+                {
+                    count++;
+                    n /= i;
+                }
+                if (count != 0)
+                    primeFactorDic.Add(i, count);
+            }
+
+            return primeFactorDic;
+        }
+
+        /// <summary>
         /// 回文数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
