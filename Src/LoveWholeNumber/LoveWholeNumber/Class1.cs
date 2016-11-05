@@ -736,5 +736,40 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// ズッカーマン数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>ズッカーマン数ならtrue でないならfalse</returns>
+        public static bool IsZuckermanNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            List<int> digitList = new List<int>();
+
+            int divNum = 1;
+            while (n / divNum != 0)
+            {
+                n /= divNum;
+                digitList.Add(n % 10);
+                divNum *= 10;
+            }
+
+            if (digitList.Contains(0))
+                return false;
+
+            int product = 1;
+            foreach (int d in digitList)
+            {
+                product *= d;
+            }
+
+            if (ListUpDivisor(n).Contains(product))
+                return true;
+
+            return false;
+        }
     }
 }
