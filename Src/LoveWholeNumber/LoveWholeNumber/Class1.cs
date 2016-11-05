@@ -415,6 +415,9 @@ namespace LoveWholeNumber
         /// <returns>友愛数ならtrue でないならfalse</returns>
         public static bool IsAmicablePair(int m, int n)
         {
+            if (m == n)
+                return false;
+
             if (SumOfDivisorMinusN(m) == SumOfDivisorMinusN(n) && m > 1)
                 return true;
 
