@@ -738,6 +738,28 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// 桁の総和の取得
+        /// </summary>
+        /// <param name="n">自然数</param>
+        /// <returns>桁の総和 失敗で-1</returns>
+        public static int GetSumOfDigits(int n)
+        {
+            if (n < 1)
+                return -1;
+            
+            int sum = new int();
+            int divNum = 1;
+            while (n / divNum != 0)
+            {
+                n /= divNum;
+                sum = n % 10;
+                divNum *= 10;
+            }
+
+            return sum;
+        }
+
+        /// <summary>
         /// ズッカーマン数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
