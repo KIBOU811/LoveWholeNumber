@@ -828,5 +828,32 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// スミス数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>スミス数ならtrue でないならfalse</returns>
+        public static bool IsSmithNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            var primeFactorDic = GetPrimeFactorDictionary(n);
+
+            int sum = new int();
+            foreach (KeyValuePair<int, int> p in primeFactorDic)
+            {
+                for (int i = 0; i < p.Value; i++)
+                {
+                    sum += GetSumOfDigits(p.Value);
+                }
+            }
+
+            if (sum == GetSumOfDigits(n))
+                return true;
+
+            return false;
+        }
     }
 }
