@@ -738,6 +738,29 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// 桁ごとに数を列挙
+        /// </summary>
+        /// <param name="n">列挙したい自然数</param>
+        /// <returns>桁ごとの数のリスト 失敗で空のリスト</returns>
+        public static List<int> ListUpDigitNum(int n)
+        {
+            List<int> digitList = new List<int>();
+
+            if (n < -1)
+                return digitList;
+
+            int divNum = 1;
+            while (n / divNum != 0)
+            {
+                n /= divNum;
+                digitList.Add(n % 10);
+                divNum *= 10;
+            }
+
+            return digitList;
+        }
+
+        /// <summary>
         /// 桁の総和の取得
         /// </summary>
         /// <param name="n">自然数</param>
