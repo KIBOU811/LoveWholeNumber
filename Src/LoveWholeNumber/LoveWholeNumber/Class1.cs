@@ -447,6 +447,25 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// 婚約数判定
+        /// </summary>
+        /// <param name="m">判定したい自然数</param>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>婚約数ならtrue でないならfalse</returns>
+        public static bool IsBetrothedNumbers(int m, int n)
+        {
+            if (m == n)
+                return false;
+
+            if (m > 1
+                && SumOfDivisorMinusN(m) - 1 == n
+                && SumOfDivisorMinusN(n) - 1 == m)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
         /// 倍積完全数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
