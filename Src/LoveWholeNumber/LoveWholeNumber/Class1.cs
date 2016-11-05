@@ -433,6 +433,9 @@ namespace LoveWholeNumber
         /// <returns>社交数ならtrue でないならfalse</returns>
         public static bool IsSociableNumbers(int l, int m, int n)
         {
+            if (l == m || m == n || n == l)
+                return false;
+
             n = SumOfDivisorMinusN(n);
 
             if (l > 1
