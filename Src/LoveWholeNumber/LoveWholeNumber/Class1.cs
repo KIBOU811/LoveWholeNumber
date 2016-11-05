@@ -197,14 +197,7 @@ namespace LoveWholeNumber
             if (n < 1)
                 return -1;
 
-            int length = n.ToString("D").Length;
-            List<int> digitList = new List<int>();
-
-            for (int i = 0; i < length; i++)
-            {
-                digitList.Add(n % 10);
-                n /= 10;
-            }
+            List<int> digitList = ListUpDigitNum(n);
 
             int result = 0;
 
