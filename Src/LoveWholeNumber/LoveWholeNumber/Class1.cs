@@ -498,6 +498,25 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// サブライム数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>サブライム数ならtrue でないならfalse</returns>
+        public static bool IsSublimeNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            int count = DivisorFunction(n, 0);
+            int sum = DivisorFunction(n, 1);
+
+            if (IsPerfectNumber(count) && IsPerfectNumber(sum) && count != sum)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
         /// 最大公約数の取得
         /// </summary>
         /// <param name="m">整数m</param>
