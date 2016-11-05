@@ -792,15 +792,7 @@ namespace LoveWholeNumber
             if (n < 1)
                 return false;
 
-            List<int> digitList = new List<int>();
-
-            int divNum = 1;
-            while (n / divNum != 0)
-            {
-                n /= divNum;
-                digitList.Add(n % 10);
-                divNum *= 10;
-            }
+            List<int> digitList = ListUpDigitNum(n);
 
             if (digitList.Contains(0))
                 return false;
