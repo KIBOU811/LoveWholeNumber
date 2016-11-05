@@ -775,7 +775,7 @@ namespace LoveWholeNumber
             while (n / divNum != 0)
             {
                 n /= divNum;
-                sum = n % 10;
+                sum += n % 10;
                 divNum *= 10;
             }
 
