@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace LoveWholeNumber
@@ -716,6 +717,24 @@ namespace LoveWholeNumber
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// 自己同形数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>自己同形数ならtrue でないならfalse</returns>
+        public static bool IsAutomorphicNumber(int n)
+        {
+            if (n < 1 || n > 46340)
+                return false;
+
+            int num = n * n - n;
+
+            if (n % (int)Math.Pow(10, num.ToString("D").Length) == 0)
+                return true;
+
+            return false;
         }
     }
 }
