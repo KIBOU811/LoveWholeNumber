@@ -757,7 +757,7 @@ namespace LoveWholeNumber
 
             int num = n * n - n;
 
-            if (n % (int)Math.Pow(10, num.ToString("D").Length) == 0)
+            if (n % (int)Math.Pow(10, unchecked((int) Math.Log10(num)) + 1) == 0)
                 return true;
 
             return false;
