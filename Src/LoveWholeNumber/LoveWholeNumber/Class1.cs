@@ -874,5 +874,30 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// ナルシシスト数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>ナルシシスト数ならtrue でないならfalse</returns>
+        public static bool IsNarcissisticNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            List<int> digitList = ListUpDigitNum(n);
+            int sum = new int();
+            int length = unchecked((int) Math.Log10(n)) + 1;
+
+            foreach (var d in digitList)
+            {
+                sum += (int)Math.Pow(d, length);
+            }
+
+            if (sum == n)
+                return true;
+
+            return false;
+        }
     }
 }
