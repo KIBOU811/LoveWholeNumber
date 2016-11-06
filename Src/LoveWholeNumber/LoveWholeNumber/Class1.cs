@@ -925,6 +925,30 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// 立方数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>立方数ならtrue でないならfalse 引数が1241以上でもfalse</returns>
+        public static bool IsCubicNumber(int n)
+        {
+            if (n < 1 || n > 1240)
+                return false;
+
+            for (int i = 1; i <= 1240; i++)
+            {
+                int cubic = (int) Math.Pow(i, 3);
+
+                if (cubic > n)
+                    return false;
+
+                if (cubic == n)
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// 四乗数・二重平方数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
