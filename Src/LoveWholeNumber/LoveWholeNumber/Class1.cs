@@ -901,6 +901,30 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
+        /// 平方数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>平方数ならtrue でないならfalse 引数が46341以上でもfalse</returns>
+        public static bool IsSquareNumber(int n)
+        {
+            if (n < 1 || n > 46340)
+                return false;
+
+            for (int i = 1; i < 46340; i++)
+            {
+                int square = (int) Math.Pow(i, 2);
+
+                if (square > n)
+                    return false;
+
+                if (square == n)
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// 四乗数・二重平方数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
