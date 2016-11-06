@@ -899,5 +899,29 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 四乗数・二重平方数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>四乗数・二重平方数ならtrue でないならfalse 引数が216以上でもfalse</returns>
+        public static bool IsBiquadraticNumber(int n)
+        {
+            if (n < 1 || n > 215)
+                return false;
+
+            for (int i = 1; i <= 215; i++)
+            {
+                int biquadratic = (int) Math.Pow(i, 4);
+
+                if (biquadratic > n)
+                    return false;
+
+                if (biquadratic == n)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }
