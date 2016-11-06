@@ -910,7 +910,7 @@ namespace LoveWholeNumber
             if (n < 1 || n > 46340)
                 return false;
 
-            for (int i = 1; i < 46340; i++)
+            for (int i = 1; i <= 46340; i++)
             {
                 int square = (int) Math.Pow(i, 2);
 
