@@ -971,5 +971,29 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 2の冪判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>2の冪ならtrue でないならfalse</returns>
+        public static bool IsPowerOfTwo(int n)
+        {
+            if (n < 1 || n % 2 != 0)
+                return false;
+
+            for (int i = 0; i < 31; i++)
+            {
+                int product = (int) Math.Pow(2, i);
+
+                if (product > n)
+                    return false;
+
+                if (product == n)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }
