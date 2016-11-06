@@ -861,5 +861,18 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 単偶数判定
+        /// </summary>
+        /// <param name="n">判定したい整数</param>
+        /// <returns>単偶数ならtrue でないならfalse</returns>
+        public static bool IsSinglyEvenNumber(int n)
+        {
+            if ((n - 2) % 4 == 0)
+                return true;
+
+            return false;
+        }
     }
 }
