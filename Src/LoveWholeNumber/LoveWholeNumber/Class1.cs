@@ -18,17 +18,23 @@ namespace LoveWholeNumber
             if (n < 1)
                 return primeFactorDic;
 
+            bool isExist = false;
+            int def = n;
             for (int i = 2; i <= Math.Sqrt(n); i++)
             {
                 int count = new int();
                 while (n % i == 0)
                 {
+                    isExist = true;
                     count++;
                     n /= i;
                 }
                 if (count != 0)
                     primeFactorDic.Add(i, count);
             }
+
+            if (!isExist)
+                primeFactorDic.Add(def, 1);
 
             return primeFactorDic;
         }
