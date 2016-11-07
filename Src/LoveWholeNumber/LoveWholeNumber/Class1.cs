@@ -787,11 +787,11 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// 桁の総和の取得
+        /// 数字和の取得
         /// </summary>
         /// <param name="n">自然数</param>
         /// <returns>桁の総和 失敗で-1</returns>
-        public static int GetSumOfDigits(int n)
+        public static int GetDigitSum(int n)
         {
             if (n < 1)
                 return -1;
@@ -852,11 +852,11 @@ namespace LoveWholeNumber
             {
                 for (int i = 0; i < p.Value; i++)
                 {
-                    sum += GetSumOfDigits(p.Value);
+                    sum += GetDigitSum(p.Value);
                 }
             }
 
-            if (sum == GetSumOfDigits(n))
+            if (sum == GetDigitSum(n))
                 return true;
 
             return false;
