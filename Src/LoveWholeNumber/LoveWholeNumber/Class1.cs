@@ -1019,6 +1019,9 @@ namespace LoveWholeNumber
         /// <returns>ハーシャッド数ならtrue でないならfalse</returns>
         public static bool IsHarshadNumber(int n)
         {
+            if (n < 1)
+                return false;
+
             if (n % GetDigitSum(n) == 0)
                 return true;
 
