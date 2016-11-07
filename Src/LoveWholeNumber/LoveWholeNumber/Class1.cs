@@ -995,5 +995,21 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 平方因子をもたない整数判定
+        /// </summary>
+        /// <param name="n">判定したい整数</param>
+        /// <returns>平方因子をもたない整数ならtrue でないならfalse</returns>
+        public static bool IsSquareFreeInteger(int n)
+        {
+            for (int i = 2; i <= Math.Sqrt(n); i++)
+            {
+                if (n % (int) Math.Pow(i, 2) == 0)
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
