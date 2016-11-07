@@ -1011,5 +1011,18 @@ namespace LoveWholeNumber
 
             return true;
         }
+
+        /// <summary>
+        /// ハーシャッド数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>ハーシャッド数ならtrue でないならfalse</returns>
+        public static bool IsHarshadNumber(int n)
+        {
+            if (n % GetDigitSum(n) == 0)
+                return true;
+
+            return false;
+        }
     }
 }
