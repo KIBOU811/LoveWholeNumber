@@ -672,7 +672,7 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// 幸運素数判定の追加
+        /// 幸運素数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
         /// <returns>幸運素数ならtrue でないならfalse</returns>
