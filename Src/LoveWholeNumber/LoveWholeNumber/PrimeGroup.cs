@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LoveWholeNumber
@@ -104,6 +105,27 @@ namespace LoveWholeNumber
                 return true;
 
             return false;
+        }
+
+        /// <summary>
+        /// 素数列取得
+        /// </summary>
+        /// <param name="n">までの素数を列挙</param>
+        /// <returns>nまでの列挙された素数リスト 失敗で空のリスト</returns>
+        public static List<int> GetPrimeList(int n)
+        {
+            List<int> primeList = new List<int>();
+
+            if (n < 1)
+                return primeList;
+
+            for (int i = 1; i <= n; i++)
+            {
+                if(IsPrime(n))
+                    primeList.Add(i);
+            }
+
+            return primeList;
         }
 
         /// <summary>
