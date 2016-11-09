@@ -64,7 +64,7 @@ namespace LoveWholeNumber
         /// <returns>メルセンヌ数ならtrue でないならfalse</returns>
         public static bool IsMersenneNumber(int n)
         {
-            if (n == 2147483647)
+            if (n == int.MaxValue)
                 return true;
 
             if (n < 0)
