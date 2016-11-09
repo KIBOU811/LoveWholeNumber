@@ -1027,5 +1027,31 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 三角数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>三角数ならtrue でないならfalse</returns>
+        public static bool IsTriangularNumber(int n)
+        {
+            if (n < 1)
+                return false;
+            
+            int toN = new int();
+
+            for (int i = 1; i < int.MaxValue; i++)
+            {
+                toN += i;
+
+                if (toN == n)
+                    return true;
+
+                if (toN > n)
+                    break;
+            }
+
+            return false;
+        }
     }
 }
