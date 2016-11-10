@@ -1053,5 +1053,31 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 五角数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>五角数ならtrue でないならfalse</returns>
+        public static bool IsPentagonalNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            int toN = 1;
+
+            for (int i = 1; i < int.MaxValue; i++)
+            {
+                toN += 3 * i + 1;
+
+                if (toN == n)
+                    return true;
+
+                if (toN > n)
+                    break;
+            }
+
+            return false;
+        }
     }
 }
