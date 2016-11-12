@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LoveWholeNumber
 {
-    class PrimeGroup
+    class Prime
     {
         /// <summary>
         /// 素数判定

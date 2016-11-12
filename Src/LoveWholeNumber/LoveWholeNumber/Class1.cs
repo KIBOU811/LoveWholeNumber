@@ -698,7 +698,7 @@ namespace LoveWholeNumber
 
             foreach (int d in divisorList)
             {
-                if (PrimeGroup.IsPrime(d))
+                if (Prime.IsPrime(d))
                     count++;
             }
 
@@ -718,7 +718,7 @@ namespace LoveWholeNumber
             if (n < 1)
                 return false;
 
-            if (!PrimeGroup.IsPrime(n))
+            if (!Prime.IsPrime(n))
                 return true;
 
             return false;
