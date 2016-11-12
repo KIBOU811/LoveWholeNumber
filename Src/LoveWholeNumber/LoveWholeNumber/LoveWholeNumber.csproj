@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="WholeNumber.cs" />
     <Compile Include="Polygonal.cs" />
-    <Compile Include="PrimeGroup.cs" />
+    <Compile Include="Prime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
