@@ -355,7 +355,7 @@ namespace LoveWholeNumber
         /// <returns>回文素数ならtrue でないならfalse</returns>
         public static bool IsPalindromicPrime(int n)
         {
-            if (WholeNumberGroup.IsPalindromicNumber(n) && IsPrime(n))
+            if (WholeNumber.IsPalindromicNumber(n) && IsPrime(n))
                 return true;
 
             return false;
@@ -373,7 +373,7 @@ namespace LoveWholeNumber
 
             int reversal = int.Parse(new string(n.ToString().ToCharArray().Reverse().ToArray()));
 
-            if (!WholeNumberGroup.IsPalindromicNumber(n) && IsPrime(reversal))
+            if (!WholeNumber.IsPalindromicNumber(n) && IsPrime(reversal))
                 return true;
 
             return false;
@@ -420,7 +420,7 @@ namespace LoveWholeNumber
         /// <returns>メルセンヌ素数ならtrue でないならfalse</returns>
         public static bool IsMersennePrime(int n)
         {
-            if (IsPrime(n) && WholeNumberGroup.IsMersenneNumber(n))
+            if (IsPrime(n) && WholeNumber.IsMersenneNumber(n))
                 return true;
 
             return false;
@@ -475,7 +475,7 @@ namespace LoveWholeNumber
         /// <returns>カレン素数ならtrue でないならfalse</returns>
         public static bool IsCullenPrime(int n)
         {
-            if (IsPrime(n) && WholeNumberGroup.IsCullenNumber(n))
+            if (IsPrime(n) && WholeNumber.IsCullenNumber(n))
                 return true;
 
             return false;
@@ -488,7 +488,7 @@ namespace LoveWholeNumber
         /// <returns>ウッダル素数ならtrue でないならfalse</returns>
         public static bool IsWoodallPrime(int n)
         {
-            if (IsPrime(n) && WholeNumberGroup.IsWoodallNumber(n))
+            if (IsPrime(n) && WholeNumber.IsWoodallNumber(n))
                 return true;
 
             return false;
@@ -527,7 +527,7 @@ namespace LoveWholeNumber
         /// <returns>フィボナッチ素数ならtrue でないならfalse</returns>
         public static bool IsFibonacciPrime(int n)
         {
-            if (IsPrime(n) && WholeNumberGroup.IsFibonacciNumber(n))
+            if (IsPrime(n) && WholeNumber.IsFibonacciNumber(n))
                 return true;
 
             return false;
@@ -540,7 +540,7 @@ namespace LoveWholeNumber
         /// <returns>ハッピー素数ならtrue でないならfalse</returns>
         public static bool IsHappyPrime(int n)
         {
-            if (IsPrime(n) && WholeNumberGroup.IsHappyNumber(n))
+            if (IsPrime(n) && WholeNumber.IsHappyNumber(n))
                 return true;
 
             return false;
@@ -607,7 +607,7 @@ namespace LoveWholeNumber
         /// <returns>半素数ならtrue でないならfalse</returns>
         public static bool IsSemiprime(int n)
         {
-            if (WholeNumberGroup.CountOfDivisor(n) == 3 || WholeNumberGroup.CountOfDivisor(n) == 4)
+            if (WholeNumber.CountOfDivisor(n) == 3 || WholeNumber.CountOfDivisor(n) == 4)
                 return true;
 
             return false;
@@ -678,7 +678,7 @@ namespace LoveWholeNumber
         /// <returns>幸運素数ならtrue でないならfalse</returns>
         public static bool IsLuckyPrime(int n)
         {
-            if (IsPrime(n) && WholeNumberGroup.IsLuckyNumber(n))
+            if (IsPrime(n) && WholeNumber.IsLuckyNumber(n))
                 return true;
 
             return false;

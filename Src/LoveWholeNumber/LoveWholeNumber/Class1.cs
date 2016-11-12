@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LoveWholeNumber
 {
-    public class WholeNumberGroup
+    public class WholeNumber
     {
         /// <summary>
         /// 素因数分解の辞書
