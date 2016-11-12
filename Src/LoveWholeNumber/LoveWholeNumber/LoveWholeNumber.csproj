@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="WholeNumber.cs" />
     <Compile Include="Polygonal.cs" />
     <Compile Include="PrimeGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
