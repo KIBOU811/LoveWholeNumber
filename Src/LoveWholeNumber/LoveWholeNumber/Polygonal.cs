@@ -137,5 +137,31 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 九角数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>九角数ならtrue でなならfalse</returns>
+        public static bool IsNonagonalNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            int toN = 1;
+
+            for (int i = 1; i < int.MaxValue; i++)
+            {
+                toN += 7 * i + 1;
+
+                if (toN == n)
+                    return true;
+
+                if (toN > n)
+                    break;
+            }
+
+            return false;
+        }
     }
 }
