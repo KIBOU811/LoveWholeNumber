@@ -163,5 +163,31 @@ namespace LoveWholeNumber
 
             return false;
         }
+
+        /// <summary>
+        /// 十角数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>十角数ならtrue でないならfalse</returns>
+        public static bool IsDecagonalNumber(int n)
+        {
+            if (n < 1)
+                return false;
+
+            int toN = 1;
+
+            for (int i = 1; i < int.MaxValue; i++)
+            {
+                toN += 8 * i + 1;
+
+                if (toN == n)
+                    return true;
+
+                if (toN > n)
+                    break;
+            }
+
+            return false;
+        }
     }
 }
