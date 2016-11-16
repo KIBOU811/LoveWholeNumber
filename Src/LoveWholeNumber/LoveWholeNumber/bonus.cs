@@ -2,7 +2,7 @@
 
 namespace LoveWholeNumber
 {
-    class bonus
+    class Bonus
     {
         /// <summary>
         /// ツェラーの公式を用いたA.D.4以降の曜日取得
