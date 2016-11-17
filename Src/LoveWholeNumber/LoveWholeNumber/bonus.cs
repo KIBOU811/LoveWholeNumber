@@ -18,7 +18,7 @@ namespace LoveWholeNumber
                 return -1;
 
             int g;
-            int c = (int) Math.Floor((double) year);
+            int c = (int) Math.Floor((double) year / 100);
 
             if (year < 1582 || (year == 1582 && (month < 10 || (month == 10 && day <= 4))))
             {
