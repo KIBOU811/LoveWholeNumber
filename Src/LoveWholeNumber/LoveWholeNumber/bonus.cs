@@ -11,7 +11,7 @@ namespace LoveWholeNumber
         /// <param name="month">月</param>
         /// <param name="day">日</param>
         /// <param name="isIso8601">返り値をISO8601で返すか</param>
-        /// <returns>曜日を表す数字</returns>
+        /// <returns>曜日を表す数字 失敗なら-1</returns>
         public static int GetDayOfTheWeek(int year, int month, int day, bool isIso8601)
         {
             if (year < 4)
