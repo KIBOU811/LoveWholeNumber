@@ -235,5 +235,19 @@
 
             return false;
         }
+
+        /// <summary>
+        /// 任意の序列の多角数取得
+        /// </summary>
+        /// <param name="nth">任意の序列</param>
+        /// <param name="nSided">n角数のn</param>
+        /// <returns>指定した序列の多角数 失敗で-1</returns>
+        public static int GetNSidedNumber(int nth, int nSided)
+        {
+            if (nth < 1 || nSided < 3)
+                return -1;
+
+            return ((nSided - 2) * nth * nth - (4 - nSided) * nth) / 2;
+        }
     }
 }
