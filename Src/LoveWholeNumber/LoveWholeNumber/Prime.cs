@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LoveWholeNumber
 {
-    public class WholeNumberClass
+    class Prime
     {
         /// <summary>
         /// 素数判定
@@ -48,7 +48,7 @@ namespace LoveWholeNumber
                 int j;
                 for (j = 3; j <= Math.Sqrt(i); j += 2)
                 {
-                    if (i % j== 0)
+                    if (i % j == 0)
                         break;
                 }
                 if (i % j != 0)
@@ -60,7 +60,7 @@ namespace LoveWholeNumber
             }
             return -1;
         }
-        
+
         /// <summary>
         /// n番目の素数取得
         /// </summary>
@@ -103,8 +103,29 @@ namespace LoveWholeNumber
 
             if (IsPrime(high))
                 return true;
-            
+
             return false;
+        }
+
+        /// <summary>
+        /// 素数列取得
+        /// </summary>
+        /// <param name="n">までの素数を列挙</param>
+        /// <returns>nまでの列挙された素数リスト 失敗で空のリスト</returns>
+        public static List<int> GetPrimeList(int n)
+        {
+            List<int> primeList = new List<int>();
+
+            if (n < 1)
+                return primeList;
+
+            for (int i = 1; i <= n; i++)
+            {
+                if(IsPrime(n))
+                    primeList.Add(i);
+            }
+
+            return primeList;
         }
 
         /// <summary>
@@ -328,31 +349,13 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// 回文数判定
-        /// </summary>
-        /// <param name="n">判定したい自然数</param>
-        /// <returns>回文数ならtrue でないならfalse</returns>
-        public static bool IsPalindromicNumber(int n)
-        {
-            if (n < 0)
-                return false;
-
-            int reversal = int.Parse(new string(n.ToString().ToCharArray().Reverse().ToArray()));
-
-            if (reversal == n)
-                return true;
-
-            return false;
-        }
-
-        /// <summary>
         /// 回文素数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
         /// <returns>回文素数ならtrue でないならfalse</returns>
         public static bool IsPalindromicPrime(int n)
         {
-            if (IsPalindromicNumber(n) && IsPrime(n))
+            if (WholeNumber.IsPalindromicNumber(n) && IsPrime(n))
                 return true;
 
             return false;
@@ -369,8 +372,8 @@ namespace LoveWholeNumber
                 return false;
 
             int reversal = int.Parse(new string(n.ToString().ToCharArray().Reverse().ToArray()));
-            
-            if(!IsPalindromicNumber(n)&&IsPrime(reversal))
+
+            if (!WholeNumber.IsPalindromicNumber(n) && IsPrime(reversal))
                 return true;
 
             return false;
@@ -411,43 +414,13 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// メルセンヌ数判定
-        /// </summary>
-        /// <param name="n">判定したい自然数</param>
-        /// <returns>メルセンヌ数ならtrue でないならfalse</returns>
-        public static bool IsMersenneNumber(int n)
-        {
-            if (n == 2147483647)
-                return true;
-
-            if (n < 0)
-                return false;
-
-            for (int i = 1; i < 31; i++)
-            {
-                int checkNum = 1;
-                for (int j = 0; j < i; j++)
-                {
-                    checkNum *= 2;
-                }
-                if (checkNum == n)
-                    return true;
-
-                if (checkNum > n)
-                    return false;
-            }
-
-            return false;
-        }
-
-        /// <summary>
         /// メルセンヌ素数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
         /// <returns>メルセンヌ素数ならtrue でないならfalse</returns>
         public static bool IsMersennePrime(int n)
         {
-            if (IsPrime(n) && IsMersenneNumber(n))
+            if (IsPrime(n) && WholeNumber.IsMersenneNumber(n))
                 return true;
 
             return false;
@@ -496,72 +469,14 @@ namespace LoveWholeNumber
         }
 
         /// <summary>
-        /// カレン数判定
-        /// </summary>
-        /// <param name="n">判定したい自然数</param>
-        /// <returns>カレン数ならtrue でないならfalse</returns>
-        public static bool IsCullenNumber(int n)
-        {
-            if (n < 0)
-                return false;
-
-            for (int i = 1; i < 27; i++)
-            {
-                int checkNum = i;
-                for (int j = 0; j < i; j++)
-                {
-                    checkNum *= 2;
-                }
-                checkNum += 1;
-
-                if (checkNum == n)
-                    return true;
-
-                if (checkNum > n)
-                    return false;
-            }
-
-            return false;
-        }
-
-        /// <summary>
         /// カレン素数判定
         /// </summary>
         /// <param name="n">判定したい自然数</param>
         /// <returns>カレン素数ならtrue でないならfalse</returns>
         public static bool IsCullenPrime(int n)
         {
-            if (IsPrime(n) && IsCullenNumber(n))
+            if (IsPrime(n) && WholeNumber.IsCullenNumber(n))
                 return true;
-
-            return false;
-        }
-
-        /// <summary>
-        /// ウッダル数判定
-        /// </summary>
-        /// <param name="n">判定したい自然数</param>
-        /// <returns>ウッダル数ならtrue でないならfalse</returns>
-        public static bool IsWoodallNumber(int n)
-        {
-            if (n < 0)
-                return false;
-
-            for (int i = 1; i < 27; i++)
-            {
-                int checkNum = i;
-                for (int j = 0; j < i; j++)
-                {
-                    checkNum *= 2;
-                }
-                checkNum -= 1;
-
-                if (checkNum == n)
-                    return true;
-
-                if (checkNum > n)
-                    return false;
-            }
 
             return false;
         }
@@ -573,7 +488,7 @@ namespace LoveWholeNumber
         /// <returns>ウッダル素数ならtrue でないならfalse</returns>
         public static bool IsWoodallPrime(int n)
         {
-            if (IsPrime(n) && IsWoodallNumber(n))
+            if (IsPrime(n) && WholeNumber.IsWoodallNumber(n))
                 return true;
 
             return false;
@@ -599,81 +514,9 @@ namespace LoveWholeNumber
         /// <returns>偶素数ならtrue でないならfalse</returns>
         public static bool IsEvenPrime(int n)
         {
-            if(IsPrime(n)&&n==2)
+            if (IsPrime(n) && n == 2)
                 return true;
 
-            return false;
-        }
-
-        /// <summary>
-        /// 約数の列挙
-        /// </summary>
-        /// <param name="n">約数を列挙したい自然数</param>
-        /// <returns>列挙された約数のint型List</returns>
-        public static List<int> ListUpDivisor(int n)
-        {
-            List<int> divisors = new List<int>();
-            for (int i = 1; i <= n; i++)
-            {
-                if (n % i == 0)
-                    divisors.Add(i);
-            }
-            return divisors;
-        }
-
-        /// <summary>
-        /// 約数の数
-        /// </summary>
-        /// <param name="n">約数の数を求めたい自然数</param>
-        /// <returns>約数の数</returns>
-        public static int CountOfDivisor(int n)
-        {
-            return ListUpDivisor(n).Count;
-        }
-
-        /// <summary>
-        /// 約数関数
-        /// </summary>
-        /// <param name="n">自然数</param>
-        /// <param name="x">乗数 0で約数の個数 1で約数の総和</param>
-        /// <returns>総和</returns>
-        public static int DivisorFunction(int n, int x)
-        {
-            int sum = new int();
-            List<int> divisors = ListUpDivisor(n);
-
-            foreach (int d in divisors)
-                sum += d ^ x;
-
-            return sum;
-        }
-
-        /// <summary>
-        /// フィボナッチ数判定
-        /// </summary>
-        /// <param name="n">判定したい自然数</param>
-        /// <returns>フィボナッチ数ならtrue でないならfalse</returns>
-        public static bool IsFibonacciNumber(int n)
-        {
-            if (n < 0)
-                return false;
-
-            int f0 = 0;
-            int f1 = 1;
-
-            if (n == f0 || n == f1)
-                return true;
-
-            while (f1 < n)
-            {
-                int f2 = f0 + f1;
-
-                if (f2 == n)
-                    return true;
-
-                f0 = f1;
-                f1 = f2;
-            }
             return false;
         }
 
@@ -684,51 +527,7 @@ namespace LoveWholeNumber
         /// <returns>フィボナッチ素数ならtrue でないならfalse</returns>
         public static bool IsFibonacciPrime(int n)
         {
-            if (IsPrime(n) && IsFibonacciNumber(n))
-                return true;
-
-            return false;
-        }
-
-        /// <summary>
-        /// ハッピー関数
-        /// </summary>
-        /// <param name="n">引数</param>
-        /// <returns>各桁の平方数の和</returns>
-        public static int HappyFunction(int n)
-        {
-            int length = n.ToString("D").Length;
-            List<int> digitList = new List<int>();
-
-            for (int i = 0; i < length; i++)
-            {
-                digitList.Add(n % 10);
-                n /= 10;
-            }
-
-            int result = 0;
-
-            foreach (var i in digitList)
-            {
-                result += i * i;
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// ハッピー数判定
-        /// </summary>
-        /// <param name="n">判定したい自然数</param>
-        /// <returns>ハッピー数ならtrue でないならfalse</returns>
-        public static bool IsHappyNumber(int n)
-        {
-            while (n.ToString("D").Length != 1)
-            {
-                HappyFunction(n);
-            }
-
-            if (n == 1)
+            if (IsPrime(n) && WholeNumber.IsFibonacciNumber(n))
                 return true;
 
             return false;
@@ -741,7 +540,7 @@ namespace LoveWholeNumber
         /// <returns>ハッピー素数ならtrue でないならfalse</returns>
         public static bool IsHappyPrime(int n)
         {
-            if (IsPrime(n) && IsHappyNumber(n))
+            if (IsPrime(n) && WholeNumber.IsHappyNumber(n))
                 return true;
 
             return false;
@@ -796,6 +595,90 @@ namespace LoveWholeNumber
                 return false;
 
             if ((GetNthPrime(numOfPrime - 1) + GetNumOfPrime(numOfPrime + 1)) / 2 > n)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// 半素数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>半素数ならtrue でないならfalse</returns>
+        public static bool IsSemiprime(int n)
+        {
+            if (WholeNumber.CountOfDivisor(n) == 3 || WholeNumber.CountOfDivisor(n) == 4)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// Left-truncatable prime判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>Left-truncatable primeならtrue でないならfalse</returns>
+        public static bool IsLeftTruncatablePrime(int n)
+        {
+            if (!IsPrime(n))
+                return false;
+
+            string s = n.ToString();
+
+            if (s.Contains("0"))
+                return false;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (!IsPrime(int.Parse(s.Substring(i))))
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Right-truncatable prime判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>Right-truncatable primeならtrue でないならfalse</returns>
+        public static bool IsRightTruncatablePrime(int n)
+        {
+            if (!IsPrime(n))
+                return false;
+
+            while (true)
+            {
+                n /= 10;
+                if (n == 0)
+                    return true;
+
+                if (!IsPrime(n))
+                    return false;
+            }
+        }
+
+        /// <summary>
+        /// Two-sided prime判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>Two-sided primeならtrue でないならfalse</returns>
+        public static bool IsTwoSidedPrime(int n)
+        {
+            if (IsLeftTruncatablePrime(n) && IsRightTruncatablePrime(n))
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// 幸運素数判定
+        /// </summary>
+        /// <param name="n">判定したい自然数</param>
+        /// <returns>幸運素数ならtrue でないならfalse</returns>
+        public static bool IsLuckyPrime(int n)
+        {
+            if (IsPrime(n) && WholeNumber.IsLuckyNumber(n))
                 return true;
 
             return false;
